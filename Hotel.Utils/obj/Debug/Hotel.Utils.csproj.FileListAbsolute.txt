@@ -1,0 +1,5 @@
+D:\С#_projects_vs2015\Hotel_ipz\Hotel.Utils\bin\Debug\Hotel.Utils.dll.config
+D:\С#_projects_vs2015\Hotel_ipz\Hotel.Utils\bin\Debug\Hotel.Utils.dll
+D:\С#_projects_vs2015\Hotel_ipz\Hotel.Utils\bin\Debug\Hotel.Utils.pdb
+D:\С#_projects_vs2015\Hotel_ipz\Hotel.Utils\obj\Debug\Hotel.Utils.dll
+D:\С#_projects_vs2015\Hotel_ipz\Hotel.Utils\obj\Debug\Hotel.Utils.pdb

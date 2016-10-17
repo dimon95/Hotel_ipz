@@ -1,0 +1,5 @@
+D:\С#_projects_vs2015\Hotel_ipz\Hotel.Dto\bin\Debug\Hotel.Dto.dll
+D:\С#_projects_vs2015\Hotel_ipz\Hotel.Dto\bin\Debug\Hotel.Dto.pdb
+D:\С#_projects_vs2015\Hotel_ipz\Hotel.Dto\obj\Debug\Hotel.Dto.dll
+D:\С#_projects_vs2015\Hotel_ipz\Hotel.Dto\obj\Debug\Hotel.Dto.pdb
+D:\С#_projects_vs2015\Hotel_ipz\Hotel.Dto\obj\Debug\Hotel.Dto.csprojResolveAssemblyReference.cache
