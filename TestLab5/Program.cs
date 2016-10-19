@@ -70,6 +70,9 @@ namespace TestLab5
 
                 Guid h1 = hallServ.CreateHall( 1, "Hall munber 1", 100, 500.01m );
 
+                rServ.SetCriteria( r1, SearchCriteria.Freedge );
+                rServ.SetCriteria( r1, SearchCriteria.TV );
+
                 AccountDto acc1 = accServ.Indentify( hashProvider.GetHashCode( "1111" ), "pupkin@example.com" );
                 AccountDto acc2 = accServ.Indentify( hashProvider.GetHashCode( "1111" ), "omarov@example.com" );
                 AccountDto acc3 = accServ.Indentify( hashProvider.GetHashCode( "1111" ), "bezrukov@example.com" );

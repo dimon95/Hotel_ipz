@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Hotel.Model.Entities.Concrete
 {
+    public enum SearchCriteria: byte { Freedge = 0x01, TV = 0x02, WiFi = 0x04, Vault = 0x08, Count = 0x10 };
+
     public class Room : Abstract.Place
     {
         /*public bool HasFreedge { get; set; }
@@ -13,8 +15,10 @@ namespace Hotel.Model.Entities.Concrete
         public bool HasWiFi { get; set; }
         public bool HasVault { get; set; }*/
 
-        public virtual IDictionary<string, bool> SearchCriterias { get; private set; }
+        //public virtual IDictionary<string, bool> SearchCriterias { get; private set; }
         
+        public int SearchCriterias { get; set; }
+
         public int BedCount { get; set; }
 
         protected Room () { }
@@ -24,33 +28,61 @@ namespace Hotel.Model.Entities.Concrete
         {
             BedCount = bedCount;
 
-            SearchCriterias = new Dictionary<string, bool>();
+            /*SearchCriterias = new Dictionary<string, bool>();
 
             SearchCriterias.Add( "HasFreedge", false );
             SearchCriterias.Add( "HasTV", false );
             SearchCriterias.Add( "HasWiFi", false );
-            SearchCriterias.Add( "HasVault", false );
+            SearchCriterias.Add( "HasVault", false );*/
+
+            SearchCriterias = 0x00;
         }
 
-        public void SetCriteria ( string name )
+        public void SetCriteria ( SearchCriteria criteria )
         {
-            if ( !SearchCriterias.ContainsKey( name ) )
+            /*if ( !SearchCriterias.ContainsKey( name ) )
                 throw new ArgumentException("criteria no found");
 
-            SearchCriterias [ name ] = true;
+            SearchCriterias [ name ] = true;*/
+
+            if ( criteria == SearchCriteria.Count )
+                throw new ArgumentException("Invalid value");
+
+            SearchCriterias |= ( byte ) criteria;
         }
 
-        public void ResetCriteria ( string name )
+        public void ResetCriteria ( SearchCriteria criteria )
         {
-            if ( !SearchCriterias.ContainsKey( name ) )
+            /*if ( !SearchCriterias.ContainsKey( name ) )
                 throw new ArgumentException( "criteria no found" );
 
-            SearchCriterias [ name ] = false;
+            SearchCriterias [ name ] = false;*/
+
+            if ( criteria == SearchCriteria.Count )
+                throw new ArgumentException( "Invalid value" );
+
+            SearchCriterias &= ( byte ) criteria;
         }
 
         public IList<string> GetAllCriterias ()
         {
-            return SearchCriterias.Keys.ToList();
+            IList<string> res = new List<string>();
+
+            //for(SearchCriteria sc = (SearchCriteria)0x01; sc < SearchCriteria.Count;  sc )
+
+            byte sc = 0x01;
+
+            while ( sc < (byte)SearchCriteria.Count)
+            {
+                res.Add( (( SearchCriteria ) sc).ToString() );
+
+
+
+                sc = (byte)(sc * 2);                
+            }
+
+            return res;
+            //return SearchCriterias.Keys.ToList();
         }
     }
 }

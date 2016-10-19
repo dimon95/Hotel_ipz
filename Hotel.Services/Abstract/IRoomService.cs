@@ -14,9 +14,11 @@ namespace Hotel.Services.Abstract
         Guid CreateRoom ( int number, string description, int personsCount, int bedCount,
             decimal price);
 
-        void SetCriteria ( Guid roomId, string criteria );
+        void SetCriteria ( Guid roomId, SearchCriteria criteria );
 
-        void ResetCriteria ( Guid roomId, string criteria );
+        void ResetCriteria ( Guid roomId, SearchCriteria criteria );
+
+        List<RoomDto> GetRooms ( SearchCriteria criteria );
   
     }
 }

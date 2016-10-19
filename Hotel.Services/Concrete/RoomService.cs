@@ -31,7 +31,7 @@ namespace Hotel.Services.Concrete
             return r.Id;
         }
 
-        public void ResetCriteria ( Guid roomId, string criteria )
+        public void ResetCriteria ( Guid roomId, SearchCriteria criteria )
         {
             RoomRepository.StartTransaction();
 
@@ -42,7 +42,7 @@ namespace Hotel.Services.Concrete
             RoomRepository.Commit();
         }
 
-        public void SetCriteria ( Guid roomId, string criteria )
+        public void SetCriteria ( Guid roomId, SearchCriteria criteria )
         {
             RoomRepository.StartTransaction();
 
@@ -109,6 +109,19 @@ namespace Hotel.Services.Concrete
             base.SetPlaceOnRestavration( placeId );
 
             RoomRepository.Commit();
+        }
+
+        public List<RoomDto> GetRooms ( SearchCriteria criteria )
+        {
+            List<RoomDto> res = new List<RoomDto>();
+
+            foreach ( Room r in RoomRepository.LoadAll() )
+            {
+                if ( ( r.SearchCriterias & ( byte ) criteria ) != 0 )
+                    res.Add( r.toDto() );
+            }
+
+            return res;
         }
     }
 }

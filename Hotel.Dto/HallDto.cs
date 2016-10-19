@@ -13,5 +13,10 @@ namespace Hotel.Dto
             : base( id, number, price, description, personsCount, onRestavration, bookings )
         {
         }
+
+        public override string ToString ()
+        {
+            return base.ToString() + "\r\n\r\n";
+        }
     }
 }

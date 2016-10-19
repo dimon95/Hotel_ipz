@@ -39,7 +39,7 @@ namespace Hotel.Dto
                 res += p.ToString();
             }
 
-            res += "\r\n\r\n";
+            //res += "\r\n\r\n";
 
             return res;
         }

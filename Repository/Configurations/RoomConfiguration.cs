@@ -14,6 +14,10 @@ namespace Hotel.Repository.Configurations
         {
             Property( p => p.Description ).IsRequired();
             HasMany( p => p.Bookings );
+
+            Property( p => p.SearchCriterias ).IsOptional();
+            Property( p => p.SearchCriterias ).HasColumnType("int");
+            Property( p => p.SearchCriterias ).HasColumnName("SearchCriterias");
         }
     }
 }
