@@ -109,7 +109,6 @@ namespace TestLab5
 
                 accServ.OnPaymentMade( acc1.Id );
 
-
             }
 
             using ( HotelDbContext dbContext2 = new HotelDbContext() )

@@ -8,7 +8,7 @@ using Hotel.Model.Entities.Concrete;
 
 namespace Hotel.Repository.Abstract
 {
-    public interface IBookingPeriodRepository : IRepository<BookingPeriod>
+    /*public interface IBookingPeriodRepository : IRepository<BookingPeriod>
     {
-    }
+    }*/
 }

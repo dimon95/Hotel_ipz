@@ -14,10 +14,6 @@ namespace Hotel.Services.Abstract
     {
         void DeletePlace ( Guid id );
 
-        /*void AddBookingPeriodTo ( Guid placeId, Guid periodId );
-
-        void DeleteBookingPeriodFrom ( Guid placeId, Guid periodId );*/
-
         IList<PeriodDto> GetBookedPeriodsFor ( Guid placeId );
 
         void SetPlaceOnRestavration ( Guid placeId );

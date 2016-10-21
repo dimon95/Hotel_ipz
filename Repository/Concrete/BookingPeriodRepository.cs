@@ -10,10 +10,10 @@ using System.Data.Entity;
 
 namespace Hotel.Repository.Concrete
 {
-    public class BookingPeriodRepository : BasicRepository<BookingPeriod>, IBookingPeriodRepository
+    /*public class BookingPeriodRepository : BasicRepository<BookingPeriod>, IBookingPeriodRepository
     {
         public BookingPeriodRepository ( HotelDbContext dbContext, DbSet<BookingPeriod> dbSet ) : base( dbContext, dbSet )
         {
         }
-    }
+    }*/
 }

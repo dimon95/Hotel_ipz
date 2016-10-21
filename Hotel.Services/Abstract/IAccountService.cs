@@ -29,11 +29,5 @@ namespace Hotel.Services.Abstract
         BookingHolderDto GetHistoryContent ( Guid userId );
 
         void OnPaymentMade ( Guid userId );
-
-        /*void PutToCart ( Guid userId, Guid BookingId );
-
-        void DeleteFromCart ( Guid userId );
-
-        void ClearCart ( Guid userId );*/
     }
 }

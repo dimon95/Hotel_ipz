@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hotel.Model.Entities.Concrete
 {
-    public enum SearchCriteria: byte { Freedge = 0x01, TV = 0x02, WiFi = 0x04, Vault = 0x08, Count = 0x10 };
+    public enum SearchCriteria: byte { Freedge = 0x01, TV = 0x02, WiFi = 0x04, Vault = 0x08, Count };
 
     public class Room : Abstract.Place
     {

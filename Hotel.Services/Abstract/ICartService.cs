@@ -17,7 +17,5 @@ namespace Hotel.Services.Abstract
         void Clear ( Guid cartId );
 
         decimal GetTotalCoast ( Guid cartId );
-
-
     }
 }
