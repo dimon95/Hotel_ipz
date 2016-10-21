@@ -111,7 +111,7 @@ namespace Hotel.Services.Concrete
             RoomRepository.Commit();
         }
 
-        public List<RoomDto> GetRooms ( SearchCriteria criteria )
+        public IList<RoomDto> GetRooms ( SearchCriteria criteria )
         {
             List<RoomDto> res = new List<RoomDto>();
 
@@ -119,6 +119,20 @@ namespace Hotel.Services.Concrete
             {
                 if ( ( r.SearchCriterias & ( byte ) criteria ) != 0 )
                     res.Add( r.toDto() );
+            }
+
+            return res;
+        }
+
+        public IList<RoomDto> GetFreeRooms ( PeriodDto period )
+        {
+            IQueryable<Room> freeRooms = RoomRepository.LoadAll().Where( r => r.isFree( ModelBuilder.BuildPeriod( period ) ) );
+
+            List<RoomDto> res = new List<RoomDto>();
+
+            foreach ( Room r in freeRooms )
+            {
+                res.Add( r.toDto() );
             }
 
             return res;

@@ -87,5 +87,19 @@ namespace Hotel.Services.Concrete
 
             HallRepository.Commit();
         }
+
+        public IList<HallDto> GetFreeHalls ( PeriodDto period )
+        {
+            IQueryable<Hall> freeRooms = HallRepository.LoadAll().Where( r => r.isFree( ModelBuilder.BuildPeriod( period ) ) );
+
+            List<HallDto> res = new List<HallDto>();
+
+            foreach ( Hall h in freeRooms )
+            {
+                res.Add( h.toDto() );
+            }
+
+            return res;
+        }
     }
 }

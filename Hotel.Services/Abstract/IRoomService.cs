@@ -18,7 +18,8 @@ namespace Hotel.Services.Abstract
 
         void ResetCriteria ( Guid roomId, SearchCriteria criteria );
 
-        List<RoomDto> GetRooms ( SearchCriteria criteria );
-    
+        IList<RoomDto> GetRooms ( SearchCriteria criteria );
+
+        IList<RoomDto> GetFreeRooms ( PeriodDto period );
     }
 }

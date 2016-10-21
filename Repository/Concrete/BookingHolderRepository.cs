@@ -17,6 +17,13 @@ namespace Hotel.Repository.Concrete
         {
         }
 
+        public Booking GetBooking ( Guid bookingHolderId, Guid bookingId )
+        {
+            BookingHolder bHolder = Load(bookingHolderId);
+
+            return bHolder.Bookings.FirstOrDefault( b => b.Id == bookingId );
+        }
+
         public IEnumerable<Guid> GetBookings ( Guid bookingHolderId )
         {
             return DbSet.FirstOrDefault( bh => bh.Id == bookingHolderId ).Bookings.Select( b => b.Id );
@@ -32,20 +39,5 @@ namespace Hotel.Repository.Concrete
             return DbSet.Where( c => c is BookingHistory ).Select( c => c.Id );
 
         }
-
-        /*public override void Delete (BookingHolder bHolder)
-        {
-            BookingHistory history = bHolder as BookingHistory;
-
-            if ( history != null )
-            {
-                foreach ( Booking b in history.Bookings )
-                {
-                    b.BookedRoom.DeleteBookingPeriod( b.BookingPeriod );
-                }
-            }
-
-            base.Delete( bHolder );            
-        }*/
     }
 }

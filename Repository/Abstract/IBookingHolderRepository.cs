@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Hotel.Model.Entities.Abstract;
+using Hotel.Model.Entities.Concrete;
 
 namespace Hotel.Repository.Abstract
 {
@@ -16,5 +17,6 @@ namespace Hotel.Repository.Abstract
 
         IQueryable<Guid> GetHistories ();
 
+        Booking GetBooking ( Guid bookingHolderId, Guid bookingId );
     }
 }

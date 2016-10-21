@@ -11,5 +11,7 @@ namespace Hotel.Services.Abstract
     public interface IHallService : IPlaceService<HallDto>
     {
         Guid CreateHall ( int number, string description, int personsCount, decimal price );
+
+        IList<HallDto> GetFreeHalls ( PeriodDto period );
     }
 }
