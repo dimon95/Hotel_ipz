@@ -48,6 +48,17 @@ namespace Hotel.Model.Entities.Abstract
             Bookings.Remove( b );
         }
 
-       // public abstract void Accept ( IBookingHolderVisitor visitor );
+        public void Clear ()
+        {
+            foreach ( Booking b in Bookings )
+            {
+
+                b.BookedPlace.DeleteBookingPeriod( b.BookingPeriod );
+            }
+
+            Bookings.Clear();
+        }
+
+        // public abstract void Accept ( IBookingHolderVisitor visitor );
     }
 }

@@ -9,6 +9,7 @@ using Hotel.Repository;
 using Hotel.Repository.Abstract;
 using Hotel.Model.Entities.Abstract;
 using System.Data.Entity;
+using Hotel.Model;
 
 namespace Hotel.Repository.Concrete
 {
@@ -30,10 +31,9 @@ namespace Hotel.Repository.Concrete
 
         public override void Delete ( Account t )
         {
-            foreach ( Booking b in t.History.Bookings )
-            {
-                b.BookedPlace.DeleteBookingPeriod( b.BookingPeriod );
-            }
+            OnHistoryDeleteAccountVisitor visitor = new OnHistoryDeleteAccountVisitor();
+
+            t.Accept( visitor );
 
             base.Delete( t );
         }

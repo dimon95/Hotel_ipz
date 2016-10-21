@@ -13,10 +13,7 @@ namespace Hotel.Model
     {
         public void Visit ( Account acc )
         {
-            foreach ( Booking b in acc.History.Bookings )
-            {
-                b.BookedPlace.DeleteBookingPeriod( b.BookingPeriod );
-            }
+            acc.History.Clear();
         }
     }
 }

@@ -31,23 +31,6 @@ namespace Hotel.Model.Entities.Concrete
 
         public void MakeEmpty ()
         {
-            /*foreach ( Booking b in Bookings )
-            {
-
-                b.BookedRoom.DeleteBookingPeriod( b.BookingPeriod );
-            }*/
-
-            Bookings.Clear();
-        }
-
-        public void Clear ()
-        {
-            foreach ( Booking b in Bookings )
-            {
-
-                b.BookedPlace.DeleteBookingPeriod( b.BookingPeriod );
-            }
-
             Bookings.Clear();
         }
     }

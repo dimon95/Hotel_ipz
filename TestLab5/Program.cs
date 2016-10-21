@@ -108,7 +108,6 @@ namespace TestLab5
                 cartServ.AddItem( acc3.Cart.Id, b4 );
 
                 accServ.OnPaymentMade( acc1.Id );
-
             }
 
             using ( HotelDbContext dbContext2 = new HotelDbContext() )
