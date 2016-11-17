@@ -5,3 +5,7 @@ D:\С#_projects_vs2015\Hotel_ipz\Hotel.Model\bin\Debug\Hotel.Utils.dll
 D:\С#_projects_vs2015\Hotel_ipz\Hotel.Model\bin\Debug\Hotel.Utils.pdb
 D:\С#_projects_vs2015\Hotel_ipz\Hotel.Model\obj\Debug\Hotel.Model.dll
 D:\С#_projects_vs2015\Hotel_ipz\Hotel.Model\obj\Debug\Hotel.Model.pdb
+D:\С#_projects_vs2015\Hotel_ipz\Hotel.Model\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Validation.dll
+D:\С#_projects_vs2015\Hotel_ipz\Hotel.Model\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\С#_projects_vs2015\Hotel_ipz\Hotel.Model\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Validation.xml
+D:\С#_projects_vs2015\Hotel_ipz\Hotel.Model\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml

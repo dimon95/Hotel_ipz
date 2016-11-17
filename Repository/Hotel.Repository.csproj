@@ -49,31 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\IAccountRepository.cs" />
-    <Compile Include="Abstract\IBookingHolderRepository.cs" />
-    <Compile Include="Abstract\IBookingPeriodRepository.cs" />
-    <Compile Include="Abstract\IBookingRepository.cs" />
-    <Compile Include="Abstract\IHallRepository.cs" />
-    <Compile Include="Abstract\IPlaceRepository.cs" />
-    <Compile Include="Abstract\IRepository.cs" />
-    <Compile Include="Abstract\IRoomRepository.cs" />
-    <Compile Include="Concrete\AccountRepository.cs" />
-    <Compile Include="Concrete\BasicRepository.cs" />
-    <Compile Include="Concrete\BookingHolderRepository.cs" />
-    <Compile Include="Concrete\BookingPeriodRepository.cs" />
-    <Compile Include="Concrete\BookingRepository.cs" />
-    <Compile Include="Concrete\HallRepository.cs" />
-    <Compile Include="Concrete\PlaceRepository.cs" />
-    <Compile Include="Concrete\RoomRepository.cs" />
-    <Compile Include="Configurations\AccountConfiguration.cs" />
-    <Compile Include="Configurations\BasicConfiguration.cs" />
-    <Compile Include="Configurations\BookingConfiguration.cs" />
-    <Compile Include="Configurations\BookingHolderConfiguration.cs" />
-    <Compile Include="Configurations\BookingPeriodConfiguration.cs" />
-    <Compile Include="Configurations\DateConfiguration.cs" />
-    <Compile Include="Configurations\HallConfiguration.cs" />
-    <Compile Include="Configurations\RoomConfiguration.cs" />
-    <Compile Include="HotelDbContext.cs" />
+    <Compile Include="IAccountRepository.cs" />
+    <Compile Include="IBookingHolderRepository.cs" />
+    <Compile Include="IBookingRepository.cs" />
+    <Compile Include="IHallRepository.cs" />
+    <Compile Include="IPlaceRepository.cs" />
+    <Compile Include="IRepository.cs" />
+    <Compile Include="IRoomRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

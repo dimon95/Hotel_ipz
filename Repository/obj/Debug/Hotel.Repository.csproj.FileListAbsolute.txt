@@ -12,3 +12,7 @@ D:\С#_projects_vs2015\Hotel_ipz\Repository\bin\Debug\EntityFramework.xml
 D:\С#_projects_vs2015\Hotel_ipz\Repository\bin\Debug\EntityFramework.SqlServer.xml
 D:\С#_projects_vs2015\Hotel_ipz\Repository\obj\Debug\Hotel.Repository.dll
 D:\С#_projects_vs2015\Hotel_ipz\Repository\obj\Debug\Hotel.Repository.pdb
+D:\С#_projects_vs2015\Hotel_ipz\Repository\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Validation.dll
+D:\С#_projects_vs2015\Hotel_ipz\Repository\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\С#_projects_vs2015\Hotel_ipz\Repository\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Validation.xml
+D:\С#_projects_vs2015\Hotel_ipz\Repository\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml

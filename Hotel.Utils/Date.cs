@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hotel.Utils
 {
-    public class Date
+    public class Date:IComparable
     {
         private static byte[] _daysInMonths = new byte[] { 29, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
@@ -154,6 +154,9 @@ namespace Hotel.Utils
 
         public static bool operator == ( Date first, Date second )
         {
+            if ( object.ReferenceEquals( first, null ) || object.ReferenceEquals( first, null ) )
+                return false;
+
             return first.Day == second.Day && first.Month == second.Month && first.Year == second.Year;
         }
 
@@ -212,6 +215,26 @@ namespace Hotel.Utils
         {
             return new Date((byte)DateTime.Today.Day, (byte)DateTime.Today.Month, DateTime.Today.Year);
         }
+
+        public int CompareTo ( Date date )
+        {
+            if ( object.ReferenceEquals( date, null ) ) return 1;
+
+            if ( this > date )
+                return 1;
+            if ( this < date )
+                return -1;
+            return 0;
+        }
+
+        public int CompareTo ( object obj )
+        {
+            if ( obj == null ) return 1;
+            Date otherDate = obj as Date;
+            if (! object.ReferenceEquals( otherDate, null ))
+                return this.CompareTo( otherDate );
+            throw new ArgumentException( "Object is not date" );
+        }
     }
 
     public class BookingDate : Date
@@ -259,11 +282,16 @@ namespace Hotel.Utils
             if ( !IsValid() )
                 throw new ArgumentException("Wrong range");
         }
+
+        public static Date GetMax ()
+        {
+            return GetToday().AddDays( _maxLimit );
+        }
     }
 
     public class DateOfBirth : Date
     {
-        private static Date _maxAge = new Date(1,1,1900);
+        private static Date _minDateOfBirth = new Date(1,1,1900);
 
         private bool IsEighteeng ()
         {
@@ -283,7 +311,7 @@ namespace Hotel.Utils
 
         private bool IsValid ()
         {
-            return IsEighteeng() && this >= _maxAge;
+            return IsEighteeng() && this >= _minDateOfBirth;
         }
 
         protected DateOfBirth () { }
@@ -309,9 +337,15 @@ namespace Hotel.Utils
                 throw new ArgumentException( "Wrong range" );
         }
 
-        public static Date GetMaxAge ()
+        public static Date GetMinDateOfBirth ()
         {
-            return _maxAge;
+            return _minDateOfBirth;
+        }
+
+        public static Date GetMinEighteenDate ()
+        {
+            DateTime eighteenDate =  DateTime.Today.AddYears( -18 );
+            return new Date((byte) eighteenDate.Day, ( byte ) eighteenDate.Month, eighteenDate.Year );
         }
     }
 }

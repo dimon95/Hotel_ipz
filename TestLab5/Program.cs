@@ -5,14 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Hotel.Dto;
-using Hotel.Services.Abstract;
-using Hotel.Services.Concrete;
-using Hotel.Repository.Abstract;
-using Hotel.Repository.Concrete;
 using Hotel.Utils;
 using Hotel.Repository;
 using Hotel.Model.Entities.Abstract;
 using Hotel.Model.Entities.Concrete;
+using Hotel.Repository.Impl;
+using Microsoft.Practices.Unity;
+using Hotel.Dependencies;
+using Hotel.Services;
 
 namespace TestLab5
 {
@@ -39,29 +39,32 @@ namespace TestLab5
             //string model2Str = "";
 
             using ( HotelDbContext dbContext = new HotelDbContext() )
+            using ( var unityContainer = new UnityContainer() )
             {
-                IAccountRepository accRepo = new AccountRepository( dbContext, dbContext.Accounts );
-                IBookingHolderRepository bhRepo = new BookingHolderRepository(dbContext, dbContext.BookingHolders);
-                IBookingRepository  bRepo = new BookingRepository(dbContext, dbContext.Bookings);
-                IRoomRepository rRepo = new RoomRepository(dbContext, dbContext.Rooms);
-                IHallRepository hRepo = new HallRepository(dbContext, dbContext.Halls);
+                ContainerBoostraper.RegisterTypes( unityContainer, dbContext );
 
-                IAccountService accServ = new AccountService( accRepo );
-                ICartService cartServ = new CartService(bhRepo, bRepo, rRepo, hRepo);
-                IHistoryService histServ = new HistoryService(bhRepo, bRepo, rRepo, hRepo);
-                IRoomService rServ = new RoomService(rRepo, hRepo);
-                IHallService hallServ = new HallService(rRepo, hRepo);
+                IAccountRepository accRepo = unityContainer.Resolve<IAccountRepository>();
+                IBookingHolderRepository bhRepo = unityContainer.Resolve<IBookingHolderRepository>();
+                IBookingRepository  bRepo = unityContainer.Resolve<IBookingRepository>();
+                IRoomRepository rRepo = unityContainer.Resolve<IRoomRepository>();
+                IHallRepository hRepo = unityContainer.Resolve<IHallRepository>();
 
-                Guid cl1Id = accServ.CreateClient( "Vasya", "Pupkin", "", 01, 01, 1990,
+                IAccountService accServ = unityContainer.Resolve<IAccountService>();
+                ICartService cartServ = unityContainer.Resolve<ICartService>();
+                IHistoryService histServ = unityContainer.Resolve<IHistoryService>();
+                IRoomService rServ = unityContainer.Resolve<IRoomService>();
+                IHallService hallServ = unityContainer.Resolve<IHallService>();
+
+                Guid cl1Id = accServ.CreateClient( "Vasya", "Pupkin", "", new DateOfBirth(01, 01, 1990),
                                         "pupkin@example.com", hashProvider.GetHashCode( "1111" ) );
 
-                Guid cl2Id = accServ.CreateClient( "Innokentiy", "Omarov", "", 20, 10, 1989,
+                Guid cl2Id = accServ.CreateClient( "Innokentiy", "Omarov", "", new DateOfBirth(20, 10, 1989),
                                         "omarov@example.com", hashProvider.GetHashCode( "1111" ) );
 
-                Guid cl3Id = accServ.CreateClient( "Aleksandr", "Bezrukov", "", 20, 10, 1989,
+                Guid cl3Id = accServ.CreateClient( "Aleksandr", "Bezrukov", "", new DateOfBirth(20, 10, 1989),
                                         "bezrukov@example.com", hashProvider.GetHashCode( "1111" ) );
 
-                Guid ad1Id = accServ.CreateAdmin( "Dmitriy", "Nagiev", "", 05, 10, 1989,
+                Guid ad1Id = accServ.CreateAdmin( "Dmitriy", "Nagiev", "", new DateOfBirth(05, 10, 1989),
                                         "nagiev@example.com", hashProvider.GetHashCode( "1111" ) );
 
                 Guid r1 = rServ.CreateRoom( 1, "Room number 1", 2, 1, 1000.01m );
@@ -111,18 +114,21 @@ namespace TestLab5
             }
 
             using ( HotelDbContext dbContext2 = new HotelDbContext() )
+            using ( var unityContainer = new UnityContainer() )
             {
-                IAccountRepository accRepo = new AccountRepository( dbContext2, dbContext2.Accounts );
-                IBookingHolderRepository bhRepo = new BookingHolderRepository(dbContext2, dbContext2.BookingHolders);
-                IBookingRepository  bRepo = new BookingRepository(dbContext2, dbContext2.Bookings);
-                IRoomRepository rRepo = new RoomRepository(dbContext2, dbContext2.Rooms);
-                IHallRepository hRepo = new HallRepository(dbContext2, dbContext2.Halls);
+                ContainerBoostraper.RegisterTypes( unityContainer, dbContext2 );
 
-                IAccountService accServ = new AccountService( accRepo );
-                ICartService cartServ = new CartService(bhRepo, bRepo, rRepo, hRepo);
-                IHistoryService histServ = new HistoryService(bhRepo, bRepo, rRepo, hRepo);
-                IRoomService rServ = new RoomService(rRepo, hRepo);
-                IHallService hallServ = new HallService(rRepo, hRepo);
+                IAccountRepository accRepo = unityContainer.Resolve<IAccountRepository>();
+                IBookingHolderRepository bhRepo = unityContainer.Resolve<IBookingHolderRepository>();
+                IBookingRepository  bRepo = unityContainer.Resolve<IBookingRepository>();
+                IRoomRepository rRepo = unityContainer.Resolve<IRoomRepository>();
+                IHallRepository hRepo = unityContainer.Resolve<IHallRepository>();
+
+                IAccountService accServ = unityContainer.Resolve<IAccountService>();
+                ICartService cartServ = unityContainer.Resolve<ICartService>();
+                IHistoryService histServ = unityContainer.Resolve<IHistoryService>();
+                IRoomService rServ = unityContainer.Resolve<IRoomService>();
+                IHallService hallServ = unityContainer.Resolve<IHallService>();
 
 
                 model1Str += MakeReport( accServ, "Accounts" );

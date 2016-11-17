@@ -30,7 +30,40 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\EnterpriseLibrary.Validation.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Validation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Interception.3.5.1404.0\lib\Net45\Microsoft.Practices.Unity.Interception.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception.Configuration, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Interception.3.5.1404.0\lib\Net45\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,31 +73,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\IAccountService.cs" />
-    <Compile Include="Abstract\IBookingHolderService.cs" />
-    <Compile Include="Abstract\ICartService.cs" />
-    <Compile Include="Abstract\IDomainEntityService.cs" />
-    <Compile Include="Abstract\IHallService.cs" />
-    <Compile Include="Abstract\IHistoryService.cs" />
-    <Compile Include="Abstract\IPlaceService.cs" />
-    <Compile Include="Abstract\IRoomService.cs" />
-    <Compile Include="Concrete\AccountService.cs" />
-    <Compile Include="Concrete\BookingHolderService.cs" />
-    <Compile Include="Concrete\CartService.cs" />
-    <Compile Include="Concrete\HallService.cs" />
-    <Compile Include="Concrete\HistoryService.cs" />
-    <Compile Include="Concrete\PlaceService.cs" />
-    <Compile Include="Concrete\RoomService.cs" />
-    <Compile Include="DtoBuilder.cs" />
-    <Compile Include="ModelBuilder.cs" />
+    <Compile Include="IAccountService.cs" />
+    <Compile Include="IBookingHolderService.cs" />
+    <Compile Include="ICartService.cs" />
+    <Compile Include="IDomainEntityService.cs" />
+    <Compile Include="IHallService.cs" />
+    <Compile Include="IHistoryService.cs" />
+    <Compile Include="IPlaceService.cs" />
+    <Compile Include="IRoomService.cs" />
+    <Compile Include="Validators\BedCountValidator.cs" />
+    <Compile Include="Validators\DateBirthValidator.cs" />
+    <Compile Include="Validators\DateOrderValidator.cs" />
+    <Compile Include="Validators\PersonsCountValidator.cs" />
+    <Compile Include="Validators\PlaceNumberValidator.cs" />
+    <Compile Include="Validators\PositiveNumberValidator.cs" />
+    <Compile Include="Validators\PriceValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceUtils.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hotel.Dto\Hotel.Dto.csproj">
       <Project>{3741dbc1-5b07-4571-b513-29fcf5a2fab4}</Project>
       <Name>Hotel.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hotel.Exceptions\Hotel.Exceptions.csproj">
+      <Project>{c3abe730-2f51-462b-9e7a-cfb90e1fa179}</Project>
+      <Name>Hotel.Exceptions</Name>
     </ProjectReference>
     <ProjectReference Include="..\Hotel.Model\Hotel.Model.csproj">
       <Project>{4bc5a8cd-dbfb-422a-acb3-a64f5dd517b2}</Project>
@@ -79,6 +116,7 @@
       <Name>Hotel.Repository</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

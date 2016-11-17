@@ -48,7 +48,7 @@ namespace Hotel.Model.Entities.Concrete
             if ( criteria == SearchCriteria.Count )
                 throw new ArgumentException("Invalid value");
 
-            SearchCriterias |= ( byte ) criteria;
+            SearchCriterias |= GetSearchCriteriaBitMask(criteria);
         }
 
         public void ResetCriteria ( SearchCriteria criteria )
@@ -61,7 +61,17 @@ namespace Hotel.Model.Entities.Concrete
             if ( criteria == SearchCriteria.Count )
                 throw new ArgumentException( "Invalid value" );
 
-            SearchCriterias &= ( byte ) criteria;
+            SearchCriterias &= ~GetSearchCriteriaBitMask( criteria );
+        }
+
+        public bool HasCriteria ( SearchCriteria sc )
+        {
+            return ( GetSearchCriteriaBitMask(sc) & SearchCriterias ) != 0;
+        }
+
+        private int GetSearchCriteriaBitMask ( SearchCriteria sc )
+        {
+            return ( 1 << ( int ) sc );
         }
 
         public IList<string> GetAllCriterias ()
